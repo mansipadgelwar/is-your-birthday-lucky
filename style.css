@@ -87,7 +87,9 @@ input{
 }
 
 .output{
-    text-align: center;
+    text-align: center;  
+    color:var(--primary-color);
+    
 }
 
 .footer{
