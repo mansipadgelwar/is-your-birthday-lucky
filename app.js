@@ -1,28 +1,48 @@
-const form = document.forms[0];
-
 var date = document.querySelector("#date");
 var luckyNumber = document.querySelector("#lucky-number");
 var btnSubmit = document.querySelector("#btn-submit");
-
+var btnReset = document.querySelector("#btn-reset");
 btnSubmit.addEventListener("click",clickHandler);
 
 function clickHandler(e){
     e.preventDefault();
-    date = date.value.split("-").join("");
-    //console.log(date);
+    const lucky = Number(luckyNumber.value);
+    const dateInput = date.value.split("-").join("");
     let sum = 0;
-    if(luckyNumber.value <= 0){
-        output.innerHTML = "Please enter the number greater the 0."
+
+    if(date.value === "")
+    {
+        output.innerHTML = "Please enter your birth date";
     }
-    for(let i = 0;i < date.length; i++){
-        let num = date[i];
-        sum = sum + parseInt(num);
-    }    
-    //console.log(sum);
-    if(sum % luckyNumber.value === 0){
-        output.innerHTML = "🎉🎉Hurray! Your birthdate is a lucky number.";
+    else
+    {
+        if(lucky <= 0 || lucky === "")
+        {
+            output.innerHTML = "Please enter valid lucky number.";
+        }
+        else
+        {
+            for(let i = 0;i < dateInput.length; i++)
+            {
+                let num = dateInput[i];
+                sum = sum + parseInt(num);
+            }      
+            if(sum % lucky === 0)
+            {
+                output.innerHTML = "🎉🎉Hurray! Your birthdate is a lucky number.";
+            }
+            else
+            {
+             output.innerHTML = "😥😥Aah! Your birthday is not a lucky number.";
+            }
+        }
     }
-    else{
-        output.innerHTML = "😥😥Aah! Your birthday is not a lucky number.";
-    }
+    
 }
+
+btnReset.addEventListener("click",function (){
+   date.value = "";
+   output.innerText = "";
+   luckyNumber.value = ""; 
+});
+
