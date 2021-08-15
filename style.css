@@ -93,6 +93,14 @@ input{
     
 }
 
+#happy-output-img{
+    display: none;
+}
+
+#sad-output-img{
+    display: none;
+}
+
 .break{
     margin-top: 2rem;
 }
